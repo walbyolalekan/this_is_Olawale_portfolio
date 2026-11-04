@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>thisisOlawale — Product &amp; Brand Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Google+Sans+Code:wght@500;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000;
+    --slate-900:#0F172B;
+    --slate-500:#62748E;
+    --slate-200:#E2E8F0;
+    --slate-100:#F1F5F9;
+    --band:#F8FAFC;
+    --chip:#F3F3F3;
+    --faint:#E6E6E6;
+    --muted:rgba(0,0,0,.3);
+    --gutter:120px;
+    --display:"Cal Sans",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --pill:"Poppins",system-ui,sans-serif;
+    --mono:"Google Sans Code","Roboto Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased}
+  html,body{overflow-x:clip}
+  body{font-family:var(--body);color:var(--ink);background:#fff}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  :focus-visible{outline:2px solid #2563EB;outline-offset:3px;border-radius:6px}
+  .wrap{width:100%;max-width:calc(1200px + var(--gutter)*2);padding:0 var(--gutter);margin:0 auto}
+  section[id]{scroll-margin-top:94px}
+
+  /* ---------- Nav (sticky, frosted) ---------- */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(180%) blur(16px);backdrop-filter:saturate(180%) blur(16px);box-shadow:0 1px 0 rgba(15,23,42,.04),0 6px 24px rgba(15,23,42,.03)}
+  .nav .wrap{max-width:calc(1196px + 244px);padding:30px 122px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+  .wordmark{font-family:var(--display);font-size:27px;line-height:34px;white-space:nowrap}
+  .wordmark span{color:var(--muted)}
+  .nav-links{display:flex;gap:12px;font-family:var(--display);font-size:14px}
+  .nav-links a{display:inline-flex;align-items:center;gap:4px;height:34px;padding:0 12px;border-radius:24px;transition:background .2s}
+  .nav-links a:hover{background:var(--slate-100)}
+  .talk{justify-self:end;display:inline-flex;align-items:center;height:34px;padding:0 12px;border-radius:24px;background:#fff;font-family:var(--display);font-size:14px;white-space:nowrap;box-shadow:0 0 8.7px rgba(0,0,0,.2)}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:120px}
+  .hero-top{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 10px 10px 0}
+  .intro{display:flex;gap:24px;align-items:flex-end}
+  .portrait{width:229px;height:183px;background:var(--chip);flex:none}
+  .morph{position:relative;overflow:hidden}
+  .morph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);filter:blur(6px);transition:opacity .7s ease,transform 1.2s ease,filter .7s ease}
+  .morph img.active{opacity:1;transform:scale(1);filter:blur(0)}
+  .intro-text{display:flex;flex-direction:column;gap:24px}
+  .intro h1{font-family:var(--display);font-weight:400;font-size:48px;line-height:46px;white-space:nowrap}
+  .intro h1 .tw-dim{color:var(--muted)}
+  .roles{display:flex;gap:8px;align-items:center;margin-top:20px;font-family:var(--mono);font-weight:500;font-size:12px;line-height:28px}
+  .roles .chip{background:var(--chip);border-radius:12px 0 0 12px;padding:0 12px}
+  .meta{display:flex;gap:36px;align-items:center;font-family:var(--mono);font-weight:500;font-size:12px;line-height:17px}
+  .meta .dot{position:relative;display:inline-block;width:7px;height:7px;border-radius:50%;background:#E5141B;margin-right:8px;vertical-align:1px;animation:beep 1.4s ease-in-out infinite}
+  .meta .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#E5141B;animation:ping 1.4s ease-out infinite}
+  @keyframes beep{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes ping{0%{transform:scale(1);opacity:.6}80%,100%{transform:scale(2.8);opacity:0}}
+  .statement{width:390px;font-family:var(--display);font-size:32px;line-height:52px}
+  .statement .dim{color:var(--faint)}
+  .statement .ch{transition:color .12s linear}
+  .statement .ch.on{color:var(--ink)}
+  .statement.resetting .ch{transition:color .6s ease}
+  .caret{display:inline-block;width:2px;height:.9em;margin-left:1px;background:#000;vertical-align:-.08em;animation:caret 1s steps(1) infinite}
+  @keyframes caret{50%{opacity:0}}
+
+  .music{margin-top:120px;padding:10px 10px 10px 0;padding-bottom:120px}
+  .music p{font-size:18px;line-height:normal;color:var(--slate-500)}
+  .music p + p{margin-top:12px;color:var(--ink);font-weight:500}
+  .player{display:inline-flex;align-items:center;justify-content:center;gap:0;width:315px;height:48px;margin-top:24px;background:var(--slate-100);border-radius:100px}
+  .player .play{display:inline-flex;align-items:center;gap:12px;text-align:left}
+  .player .lbl{font-family:var(--mono);font-weight:500;font-size:12px;color:var(--slate-500);width:94px}
+  .player .song{font-family:var(--mono);font-weight:700;font-size:16px;white-space:nowrap}
+  .player .spk-btn{display:inline-flex;margin-left:12px;border-radius:6px}
+  .player .wave path{transform-box:fill-box;transform-origin:center}
+  .player.playing .wave path{animation:eq .9s ease-in-out infinite}
+  .player.playing .wave path:nth-child(2){animation-delay:-.3s}
+  .player.playing .wave path:nth-child(3){animation-delay:-.6s}
+  .player.playing .wave path:nth-child(4){animation-delay:-.15s}
+  .player.playing .wave path:nth-child(5){animation-delay:-.45s}
+  @keyframes eq{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.35)}}
+  .player .spk .off{display:none}
+  .player.muted .spk .on{display:none}
+  .player.muted .spk .off{display:inline}
+
+  /* ---------- About ---------- */
+  .about{padding-top:120px;padding-bottom:120px}
+  .about .wrap{padding-left:121px}
+  .about h2{font-family:var(--display);font-weight:400;font-size:48px;line-height:56px}
+  .about-row{display:flex;justify-content:space-between;align-items:flex-start;margin-top:24px}
+  .about-copy{width:458px;font-size:18px;line-height:normal;color:var(--slate-500)}
+  .about-copy p + p{margin-top:22px}
+  .skills{display:flex;flex-direction:column;gap:12px}
+  .skills div{display:flex;gap:18px;flex-wrap:wrap}
+  .pill{display:inline-flex;align-items:center;padding:6px 12px;border-radius:9999px;background:var(--slate-100);font-size:13px;font-weight:500;color:var(--slate-500);white-space:nowrap}
+
+  /* ---------- Projects ---------- */
+  .projects{background:var(--band);padding:120px 0}
+  .projects h2{font-family:var(--display);font-weight:400;font-size:56px;line-height:normal;color:var(--slate-900)}
+  .projects .sub{margin-top:16px;width:600px;max-width:100%;font-size:18px;line-height:normal;color:var(--slate-500)}
+  .cards{margin-top:80px;display:flex;flex-direction:column;gap:40px}
+  .card{display:flex;gap:64px;align-items:center;padding:32px;background:#fff;border:1px solid var(--slate-200);border-radius:20px}
+  .card-text{width:360px;flex:none;display:flex;flex-direction:column;gap:24px}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--slate-500)}
+  .card h3{margin-top:12px;font-family:var(--display);font-weight:400;font-size:32px;line-height:normal;color:var(--slate-900)}
+  .card p{margin-top:12px;font-size:16px;line-height:1.5;color:var(--slate-500)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .btn{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;background:var(--slate-900);color:#fff;font-size:14px;font-weight:600}
+  .card-media{flex:1;min-width:0;height:404px;border-radius:16px;overflow:hidden}
+  .card-media img{width:100%;height:100%;object-fit:cover}
+  .feats h4{font-family:var(--display);font-weight:400;font-size:15px;color:var(--slate-900)}
+  .feats ul{list-style:none;margin-top:10px;display:grid;gap:7px}
+  .feats li{position:relative;padding-left:18px;font-size:14px;line-height:1.5;color:var(--slate-500)}
+  .feats li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--slate-900)}
+
+  /* ---------- Related works ---------- */
+  .related{padding:120px 0}
+  .related .wrap{padding-left:121px}
+  .strip-head{display:flex;gap:10px;align-items:center;padding:10px;border-bottom:1px solid #000;font-family:var(--mono);font-weight:500;font-size:14px;line-height:21px}
+  .strip-head span:first-child{width:164px;flex:none}
+  .strip-head .filters{color:var(--muted)}
+  .rows{margin-top:15px;display:flex;flex-direction:column;gap:12px}
+  .row{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+  .row img{width:100%;aspect-ratio:295/348;height:auto;object-fit:cover;border-radius:2px}
+
+  /* ---------- Contact ---------- */
+  .contact{background:#000;color:#fff;padding:120px 0}
+  .contact .wrap{padding-left:122px}
+  .contact-top{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .contact h2{font-family:var(--display);font-weight:400;font-size:48px;line-height:96px;white-space:nowrap}
+  .socials{position:relative;display:flex;gap:12px;flex-wrap:wrap}
+  .socials a{display:inline-flex;align-items:center;gap:8px;height:49px;padding:0 20px;border:1.63px solid #4C4C4C;border-radius:39px;font-family:var(--pill);font-weight:500;font-size:18px;transition:border-color .2s,background .2s}
+  .socials a:hover{border-color:#fff;background:#111}
+  .toast{position:absolute;left:0;top:calc(100% + 10px);white-space:nowrap;background:#fff;color:#000;font-size:13px;padding:8px 12px;border-radius:8px;opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .2s,transform .2s;z-index:3}
+  .toast.show{opacity:1;transform:none}
+  .giant{margin-top:24px;font-family:var(--display);line-height:.78;font-size:211px;white-space:nowrap;letter-spacing:-.01em}
+  .giant span{color:#4A4A4A}
+  .gcaret{display:inline-block;width:.04em;height:.7em;margin-left:.03em;background:#fff;vertical-align:-.02em;animation:caret 1s steps(1) infinite}
+
+  /* ---------- Quotes + spinning object ---------- */
+  .quotes{position:relative;height:860px;overflow:hidden}
+  .qstage{position:absolute;left:50%;top:0;width:1440px;height:860px;transform:translateX(-50%) scale(var(--s,1));transform-origin:top center}
+  .spin{position:absolute;left:448px;top:120px;width:545px;height:620px;animation:spin 60s linear infinite;will-change:transform}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .q{position:absolute;z-index:1;width:335px;padding:23px 24px;border-radius:16px;background:linear-gradient(100deg,rgba(255,255,255,.95),rgba(255,255,255,.8) 70%,rgba(255,255,255,.55));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  .q blockquote{font-size:14.5px;line-height:24px;color:var(--slate-500);max-width:287px}
+  .q cite{display:block;margin-top:24px;font-style:normal;font-family:var(--display);font-size:24px;line-height:28px;color:#000}
+  .q1{left:310px;top:144px}
+  .q2{left:809px;top:606px}
+
+
+  /* ---------- Case study pages ---------- */
+  .case{padding-top:126px}
+  .crumb{font-family:var(--display);font-size:24px;line-height:28px}
+  .crumb a{color:var(--muted);transition:color .2s}
+  .crumb a:hover{color:#000}
+  .case-title{margin-top:128px}
+  .case-title h1{font-family:var(--display);font-weight:400;font-size:48px;line-height:56px}
+  .case-title p{margin-top:6px;font-family:var(--display);font-size:24px;line-height:30px}
+  .cs-rows{margin-top:52px;display:flex;flex-direction:column;gap:50px}
+  .cs-row{display:flex;align-items:center;justify-content:space-between;gap:64px}
+  .cs-row.flip{flex-direction:row-reverse}
+  .cs-row .cs-media{width:499px;height:556px;flex:none;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(66,133,244,.10),0 2px 10px rgba(15,23,42,.05)}
+  .cs-row .cs-media img{width:100%;height:100%;object-fit:cover}
+  .cs-text{width:582px;max-width:100%}
+  .cs-row.flip .cs-text{margin-right:0}
+  .cs-text h2{font-family:var(--display);font-weight:400;font-size:24px;line-height:30px}
+  .cs-text p,.cs-text li{font-size:18px;line-height:22px;color:var(--slate-500)}
+  .cs-text h2 + p,.cs-text h2 + ul{margin-top:2px}
+  .cs-text p + p{margin-top:22px}
+  .cs-text p + ul{margin-top:0}
+  .cs-text ul{padding-left:27px}
+  .cs-text b{font-weight:600}
+  .cs-text .btn{margin-top:24px}
+  .cs-gallery{margin-top:120px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .cs-gallery img{width:100%;aspect-ratio:592/684;object-fit:cover;display:block}
+  .cs-gallery.single{grid-template-columns:1fr}
+  .cs-gallery.single img{aspect-ratio:1196/1380}
+  .next{padding:240px 0 120px;overflow:hidden}
+  .next-head{display:flex;align-items:center;justify-content:space-between}
+  .next-head h2{font-family:var(--display);font-weight:400;font-size:48px;line-height:56px}
+  .arrows{display:flex;gap:18px}
+  .arrows button{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;transition:background .2s,opacity .2s}
+  .arrows button:hover{background:var(--slate-100)}
+  .arrows button:disabled{opacity:.3;cursor:default;background:none}
+  .next-track{margin-top:64px;display:flex;gap:50px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;margin-right:calc((100vw - 100%) / -2);padding-right:120px}
+  .next-track::-webkit-scrollbar{display:none}
+  .ncard{flex:none;width:468px;scroll-snap-align:start;display:flex;flex-direction:column}
+  .ncard .nimg{height:350px;border-radius:16px;overflow:hidden}
+  .ncard .nimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .ncard:hover .nimg img{transform:scale(1.03)}
+  .ncard .eyebrow{margin-top:32px}
+  .ncard h3{margin-top:12px;font-family:var(--display);font-weight:400;font-size:32px;line-height:normal;color:var(--slate-900)}
+  .ncard p{margin-top:12px;font-size:16px;line-height:1.5;color:var(--slate-500)}
+  .ncard .tags{margin-top:24px}
+  .ncard .btn{margin-top:30px}
+  @media (max-width:1240px){
+    .cs-row,.cs-row.flip{flex-direction:column;align-items:stretch}
+    .cs-row .cs-media{width:100%;height:auto;aspect-ratio:499/556;max-width:560px}
+    .cs-text{width:auto}
+    .next-track{padding-right:40px}
+  }
+  @media (max-width:720px){
+    .case{padding-top:56px}
+    .case-title{margin-top:48px}
+    .case-title h1,.next-head h2{font-size:38px;line-height:1.15}
+    .case-title p{font-size:20px}
+    .cs-text p,.cs-text li{font-size:16px}
+    .cs-gallery{grid-template-columns:1fr;margin-top:72px}
+    .next{padding:120px 0 72px}
+    .ncard{width:300px}
+    .ncard .nimg{height:225px}
+    .next-track{padding-right:20px}
+  }
+  /* ---------- Responsive ---------- */
+  @media (max-width:1240px){
+    :root{--gutter:40px}
+    .nav .wrap,.about .wrap,.related .wrap,.contact .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+    .hero-top{flex-direction:column;gap:56px}
+    .about-row{flex-direction:column;gap:36px}
+    .card{flex-direction:column;align-items:stretch}
+    .card-text{width:auto}
+    .card-media{flex:none;height:auto;aspect-ratio:712/404}
+    .giant{font-size:16.8vw}
+  }
+  @media (max-width:720px){
+    :root{--gutter:20px}
+    .nav .wrap{padding-top:18px;padding-bottom:18px;grid-template-columns:auto 1fr auto;gap:8px}
+    .wordmark{font-size:20px}
+    .nav-links{justify-self:center;gap:0}
+    .nav-links a{padding:0 8px;font-size:13px}
+    .hero{padding-top:56px}
+    .intro{flex-direction:column;align-items:flex-start}
+    .intro h1{font-size:40px}
+    .statement{width:auto;font-size:25px;line-height:40px}
+    .music{margin-top:72px;padding-bottom:72px}
+    .music p{font-size:16px}
+    .player{width:auto;padding:0 18px}
+    .about,.projects,.related,.contact{padding-top:72px;padding-bottom:72px}
+    .about-copy{width:auto;font-size:16px}
+    .skills div{gap:10px}
+    .projects h2,.about h2{font-size:38px;line-height:1.15}
+    .card{padding:20px}
+    .row{grid-template-columns:repeat(2,1fr)}
+    .strip-head{flex-direction:column;align-items:flex-start;gap:4px;font-size:12px}
+    .strip-head span:first-child{width:auto}
+    .contact h2{font-size:38px;line-height:1.3}
+    .socials a{height:42px;padding:0 14px;font-size:15px}
+    .giant{margin-top:36px;font-size:13.6vw}
+    .quotes{height:auto!important;padding:48px 20px 64px}
+    .qstage{position:relative;left:auto;top:auto;width:100%;height:auto;transform:none}
+    .spin{position:relative;left:auto;top:auto;display:block;width:80%;height:auto;margin:0 auto}
+    .q{position:relative;left:auto;top:auto;width:auto;max-width:290px;padding:18px 20px}
+    .q1{margin-top:-56px}
+    .q2{margin:14px 0 0 auto}
+    .q cite{margin-top:14px;font-size:20px}
+  }
+
+  /* ---------- Mobile hamburger menu ---------- */
+  .burger,.mmenu{display:none}
+  @media (max-width:720px){
+    .nav-links,.talk{display:none}
+    .nav .wrap{grid-template-columns:1fr auto}
+    .burger{display:grid;place-content:center;gap:7px;width:44px;height:44px;margin-right:-8px;border-radius:12px;justify-self:end}
+    .burger span{display:block;width:24px;height:2px;background:#000;border-radius:2px;transition:transform .35s cubic-bezier(.65,0,.35,1)}
+    .nav.open{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+    .nav.open .burger span:first-child{transform:translateY(4.5px) rotate(45deg)}
+    .nav.open .burger span:last-child{transform:translateY(-4.5px) rotate(-45deg)}
+    .mmenu{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;padding:8px 20px 28px;background:#fff;box-shadow:0 24px 40px rgba(15,23,42,.08);clip-path:inset(0 0 100% 0);visibility:hidden;transition:clip-path .45s cubic-bezier(.65,0,.35,1),visibility 0s .45s}
+    .nav.open .mmenu{clip-path:inset(0 0 -60px 0);visibility:visible;transition:clip-path .45s cubic-bezier(.65,0,.35,1)}
+    .mmenu a{display:flex;align-items:center;gap:12px;padding:14px 0;font-family:var(--display);font-size:44px;line-height:1.05;color:#000;border-bottom:1px solid var(--slate-200);opacity:0;transform:translateY(-10px);transition:opacity .3s,transform .3s}
+    .mmenu a:last-child{border-bottom:0}
+    .nav.open .mmenu a{opacity:1;transform:none}
+    .nav.open .mmenu a:nth-child(1){transition-delay:.12s}
+    .nav.open .mmenu a:nth-child(2){transition-delay:.18s}
+    .nav.open .mmenu a:nth-child(3){transition-delay:.24s}
+    .mscrim{position:fixed;inset:0;z-index:40;background:rgba(15,23,42,.18);opacity:0;pointer-events:none;transition:opacity .35s}
+    .mscrim.show{opacity:1;pointer-events:auto}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="mscrim" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="wordmark"><span>thisis</span>Olawale</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#projects">Projects</a>
+      <a href="https://drive.google.com/uc?export=download&amp;id=1n_SYRCD_YDlUGtdGd3BONRyqdqqASYTq" target="_blank" rel="noopener" title="Download CV">Resume <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-42.34-61.66a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35A8,8,0,0,1,157.66,154.34Z"/></svg></a>
+    </nav>
+    <a href="#contact" class="talk">Let’s talk!</a>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span></button>
+  </div>
+  <nav class="mmenu" id="mmenu" aria-label="Mobile">
+    <a href="#projects">Projects</a>
+    <a href="https://drive.google.com/uc?export=download&amp;id=1n_SYRCD_YDlUGtdGd3BONRyqdqqASYTq" target="_blank" rel="noopener">Resume <svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-42.34-61.66a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35A8,8,0,0,1,157.66,154.34Z"/></svg></a>
+    <a href="#contact">Let’s talk!</a>
+  </nav>
+</header>
+
+<main id="home">
+  <section class="hero wrap">
+    <div class="hero-top">
+      <div class="intro">
+        <div class="portrait morph" aria-label="Portraits of Olawale" role="img">
+          <img class="active" src="img/me0.jpg" alt="">
+          <img src="img/me1.jpg" alt="">
+          <img src="img/me2.jpg" alt="">
+          <img src="img/me3.jpg" alt="">
+          <img src="img/me4.jpg" alt="">
+        </div>
+        <div class="intro-text">
+          <div>
+            <h1><span class="tw-dim">This is</span> Olawale</h1>
+            <div class="roles"><span class="chip">Creative Designer /</span><span>Product &amp; Brand</span></div>
+          </div>
+          <div class="meta">
+            <span><i class="dot"></i><span id="clock-time">11:55pm</span></span>
+            <span id="clock-date">10 August 2026</span>
+          </div>
+        </div>
+      </div>
+      <p class="statement">Creating experiences<br>that <span class="dim">resonate with culture<br>and business using design,<br>tech and human judgment.</span></p>
+    </div>
+
+    <div class="music">
+      <p>Music is organized sound created to express ideas, emotions, or experiences.</p>
+      <p>That’s how i keep the flow while working.</p>
+      <div class="player"><button class="play" type="button" aria-pressed="false" aria-label="Play Oba by Asake">
+        <svg class="wave" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 9v6"/><path d="M7.5 5v14"/><path d="M12 8v8"/><path d="M16.5 6v12"/><path d="M21 10v4"/></svg>
+        <span class="lbl">Now playing</span>
+        <span class="song">Oba (Asake)</span></button>
+        <button class="spk-btn" type="button" aria-pressed="true" aria-label="Sound on"><svg class="spk" width="24" height="24" viewBox="0 0 26 22" fill="none" stroke="#000" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M3 8h4l6-5v16l-6-5H3z"/><path class="on" d="M17 8.5a3.5 3.5 0 0 1 0 5M20 6a7 7 0 0 1 0 10"/><path class="off" d="M17 8l5 6M22 8l-5 6"/></svg></button>
+      </div>
+      <audio id="song" src="audio/oba.mp3" preload="auto" loop autoplay></audio>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <h2>Nice to meet you.</h2>
+      <div class="about-row">
+        <div class="about-copy">
+          <p>I’m a Product &amp; Brand Designer with 8+ years of multidisciplinary experience designing digital products, visual identities, and brand experiences.</p>
+          <p>I work at the intersection of product thinking, user experience, and visual design turning complex ideas and business requirements into clear, intuitive, and scalable experiences.</p>
+        </div>
+        <div class="skills">
+          <div><span class="pill">User interface design</span><span class="pill">Prototyping &amp; Interaction design</span><span class="pill">Design Systems</span></div>
+          <div><span class="pill">Brands &amp; Visual design</span><span class="pill">Use experience design</span><span class="pill">Product thinking</span><span class="pill">Product design</span></div>
+          <div><span class="pill">Ai native designs</span><span class="pill">Icons</span><span class="pill">Identity designs</span><span class="pill">Print designs</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects">
+    <div class="wrap">
+      <h2>Selected Projects</h2>
+      <p class="sub">A curated showcase of design systems, mobile experiences, and digital products built with precise craft and structured hierarchy.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-text">
+            <div>
+              <div class="eyebrow">Case Study 01</div>
+              <h3>PaidLife</h3>
+              <p>Financial operating system for PaidHR, designed to facilitate early wage access and structured personal finance.</p>
+            </div>
+            <div class="tags"><span class="pill">Research</span><span class="pill">Mobile app</span><span class="pill">Figma</span><span class="pill">UI/UX design</span><span class="pill">Testing</span><span class="pill">Prototyping</span><span class="pill">Research</span><span class="pill">Fintech</span></div>
+            <a href="#paidlife" class="btn">View project <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="card-media"><img src="img/proj-paidlife.jpg" alt="PaidLife wallet screen on a phone"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-text">
+            <div>
+              <div class="eyebrow">Case Study 02</div>
+              <h3>Vuzo Africa</h3>
+              <p>Payroll infrastructure for Africa. The endpoint salaries flow through. From employer to employee.</p>
+            </div>
+            <div class="tags"><span class="pill">Payroll</span><span class="pill">Brand &amp; Visual Identity</span><span class="pill">Figma</span><span class="pill">UI/UX design</span><span class="pill">Tech</span><span class="pill">Logo design</span></div>
+            <a href="#vuzo" class="btn">View project <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="card-media"><img src="img/proj-vuzo.jpg" alt="vuzo.africa logo"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-text">
+            <div>
+              <div class="eyebrow">Case Study 03</div>
+              <h3>Canto Xperience</h3>
+              <p>Wedding websites, without the stress. A minimalist and high-end platform for modern couples to launch custom visual invitation hubs.</p>
+            </div>
+            <div class="tags"><span class="pill">Brand &amp; Visual Identity</span><span class="pill">Web app</span><span class="pill">Figma</span><span class="pill">Landing page</span><span class="pill">UI/UX design</span><span class="pill">Logo design</span><span class="pill">Saas</span><span class="pill">Testing</span></div>
+            <a href="#canto" class="btn">View project <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="card-media"><img src="img/proj-canto.jpg" alt="Canto landing page on a laptop"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-text">
+            <div>
+              <div class="eyebrow">Case Study 04</div>
+              <h3>BetterSound</h3>
+              <p>Creative brand identity and promotional campaign designed to capture the essence of a modern, contemporary audio studio.</p>
+            </div>
+            <div class="tags"><span class="pill">Brand &amp; Visual Identity</span><span class="pill">Logo design</span><span class="pill">Music</span><span class="pill">Digital flyers</span><span class="pill">Youtube studio</span></div>
+            <a href="#bettersound" class="btn">View project <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+          <div class="card-media"><img src="img/proj-bettersound.jpg" alt="BetterSound guitar strap on an electric guitar"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="related" aria-label="Related works">
+    <div class="wrap">
+      <div class="strip-head"><span>Related works</span><span class="filters">Logo / Product design / Digital flyers / Web design / Brand Identity / Merch design</span></div>
+      <div class="rows">
+        <div class="row">
+          <img src="img/rw0.jpg" alt="Dashboard design on a laptop">
+          <img src="img/rw1.jpg" alt="Kòlẹ́ brand mark">
+          <img src="img/rw2.jpg" alt="Invitation card designs">
+          <img src="img/rw3.jpg" alt="Psalm 23 t-shirt">
+        </div>
+        <div class="row">
+          <img src="img/rw4.jpg" alt="Just Jollof &amp; More logo over a plate of jollof">
+          <img src="img/rw5.jpg" alt="PromptCore website on a laptop">
+          <img src="img/rw6.jpg" alt="Proply.io app and landing design">
+          <img src="img/rw7.jpg" alt="Hoodie merch designs">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="case" class="case" hidden></main>
+
+<footer>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-top">
+        <h2>Get in touch</h2>
+        <div class="socials"><span class="toast" role="status" aria-live="polite"></span>
+          <a id="link-linkedin" href="https://www.linkedin.com/in/olawale-abiodun-55476218a/" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2"/><path d="M7.5 10.5v6M7.5 7.3v.1M11 16.5v-6M11 13c0-1.7 1-2.6 2.4-2.6s2.1.9 2.1 2.6v3.5" stroke-linecap="round"/></svg>LinkedIn</a>
+          <a id="link-instagram" href="https://www.instagram.com/walbyolalekan/" target="_blank" rel="noopener"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6" fill="#fff"/></svg>Instagram</a>
+          <a id="link-email" href="mailto:thisisolawale@gmail.com" title="thisisolawale@gmail.com"><svg width="26" height="26" viewBox="0 0 26 24" fill="none" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M7 8a4 4 0 0 1 8 0v8H3V8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8h-6"/><path d="M11 4v-2h3v3h-3M11 21v-5" stroke-linecap="round"/></svg>Email</a>
+        </div>
+      </div>
+      <div class="giant" aria-hidden="true"><span>thisis</span><b class="gt" style="font-weight:inherit">Olawale</b><i class="gcaret"></i></div>
+    </div>
+  </section>
+
+  <section class="quotes">
+    <div class="qstage">
+      <img class="spin" src="img/swirl-figma.png" alt="">
+      <figure class="q q1"><blockquote>“Design is not just what it looks like and feels like. Design is how it works.”</blockquote><cite>Steve Jobs</cite></figure>
+      <figure class="q q2"><blockquote>“Good design is as little as apossible.”</blockquote><cite>Dieter Rams</cite></figure>
+    </div>
+  </section>
+</footer>
+
+<script>
+  // Typewriter fill on the hero statement: grey text turns black letter by letter, on a loop
+  (function(){
+    const box=document.querySelector('.statement'), dim=box.querySelector('.dim');
+    box.setAttribute('aria-label',box.textContent.replace(/\s+/g,' ').trim());
+    const chars=[];
+    [...dim.childNodes].forEach(node=>{
+      if(node.nodeType===3){
+        const frag=document.createDocumentFragment();
+        for(const c of node.textContent){const sp=document.createElement('span');sp.className='ch';sp.textContent=c;sp.setAttribute('aria-hidden','true');frag.appendChild(sp);chars.push(sp)}
+        node.replaceWith(frag);
+      }
+    });
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){chars.forEach(c=>c.classList.add('on'));return}
+    const caret=document.createElement('i');caret.className='caret';caret.setAttribute('aria-hidden','true');
+    let i=0;
+    function step(){
+      if(i<chars.length){
+        chars[i].classList.add('on'); chars[i].after(caret); i++;
+        setTimeout(step,/[ ,.]/.test(chars[i-1].textContent)?120:65);
+      }else{
+        setTimeout(()=>{
+          caret.remove(); box.classList.add('resetting'); chars.forEach(c=>c.classList.remove('on'));
+          setTimeout(()=>{box.classList.remove('resetting'); i=0; chars[0].before(caret); setTimeout(step,500)},900);
+        },2800);
+      }
+    }
+    chars[0].before(caret); setTimeout(step,700);
+  })();
+
+  // Now playing pill: click the song to play / pause (soundwave animates only while playing);
+  // click the speaker to switch sound on / off. Starts as early as the browser allows.
+  (function(){
+    const box=document.querySelector('.player'), btn=box.querySelector('.play'), spk=box.querySelector('.spk-btn');
+    const audio=document.getElementById('song'), lbl=box.querySelector('.lbl');
+    const set=on=>{box.classList.toggle('playing',on);btn.setAttribute('aria-pressed',on);btn.setAttribute('aria-label',(on?'Pause':'Play')+' Oba by Asake')};
+    audio.addEventListener('playing',()=>set(true));
+    audio.addEventListener('pause',()=>set(false));
+    audio.addEventListener('error',()=>{set(false);lbl.textContent='Song not added yet';setTimeout(()=>lbl.textContent='Now playing',2500)});
+    btn.addEventListener('click',()=>{
+      if(audio.paused){const p=audio.play();if(p&&p.catch)p.catch(()=>set(false))}else audio.pause();
+    });
+    let userPaused=false;
+    btn.addEventListener('click',()=>{ if(!audio.paused) userPaused=true; },true);
+    const tryPlay=()=>{ if(!userPaused && audio.paused){const p=audio.play();if(p&&p.catch)p.catch(()=>{})} };
+    tryPlay();
+    const kick=e=>{
+      ['pointerdown','keydown','touchstart'].forEach(t=>removeEventListener(t,kick,true));
+      if(btn.contains(e.target)) return;
+      tryPlay();
+    };
+    ['pointerdown','keydown','touchstart'].forEach(t=>addEventListener(t,kick,true));
+    spk.addEventListener('click',()=>{
+      audio.muted=!audio.muted;
+      box.classList.toggle('muted',audio.muted);
+      spk.setAttribute('aria-pressed',!audio.muted);
+      spk.setAttribute('aria-label',audio.muted?'Sound off':'Sound on');
+    });
+  })();
+
+  // Hero portrait: morph (blur + crossfade) into the next photo, on a loop
+  (function(){
+    const imgs=[...document.querySelectorAll('.morph img')];
+    if(imgs.length<2||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let i=0;
+    setInterval(()=>{imgs[i].classList.remove('active'); i=(i+1)%imgs.length; imgs[i].classList.add('active')},1600);
+  })();
+
+  // Footer wordmark: "Olawale" deletes and retypes on a loop
+  (function(){
+    const el=document.querySelector('.giant .gt'), word='Olawale';
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let n=word.length, dir=-1;
+    setTimeout(function step(){
+      el.textContent=word.slice(0,n);
+      let wait=dir>0?140:70;
+      if(dir>0&&n===word.length){dir=-1;wait=2600}
+      else if(dir<0&&n===0){dir=1;wait=500}
+      n+=dir; setTimeout(step,wait);
+    },2600);
+  })();
+
+  // Email button: open the mail app, and also copy the address with a confirmation
+  (function(){
+    const a=document.getElementById('link-email'), toast=document.querySelector('.socials .toast'), addr='thisisolawale@gmail.com';
+    a.addEventListener('click',()=>{
+      const show=msg=>{toast.textContent=msg;toast.classList.add('show');clearTimeout(show.t);show.t=setTimeout(()=>toast.classList.remove('show'),2600)};
+      try{navigator.clipboard.writeText(addr).then(()=>show('Email copied: '+addr),()=>show(addr))}catch(e){show(addr)}
+    });
+  })();
+
+  // Live Lagos clock in the hero
+  (function(){
+    const t=document.getElementById('clock-time'), d=document.getElementById('clock-date');
+    function tick(){
+      try{
+        const now=new Date(), tz='Africa/Lagos';
+        t.textContent=now.toLocaleTimeString('en-GB',{hour:'numeric',minute:'2-digit',hour12:true,timeZone:tz}).replace(/\s/g,'').toLowerCase();
+        d.textContent=now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:tz});
+      }catch(e){}
+    }
+    tick(); setInterval(tick,15000);
+  })();
+
+  // Scale the quote + spinning object composition to fit narrower screens
+  (function(){
+    const q=document.querySelector('.quotes');
+    const fit=()=>{const sc=Math.min(1,window.innerWidth/880); q.style.setProperty('--s',sc); q.style.height=(860*sc)+'px'};
+    fit(); addEventListener('resize',fit);
+  })();
+
+
+  // ---------- Case study pages (routed by #paidlife, #vuzo, #canto, #bettersound) ----------
+  const ARROW='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+  const CARDS={
+    paidlife:{n:'01',title:'PaidLife',img:'img/proj-paidlife.jpg',alt:'PaidLife wallet screen on a phone',desc:'Financial operating system for PaidHR, designed to facilitate early wage access and structured personal finance.',tags:['Research','Mobile app','Figma','UI/UX design','Testing','Prototyping','Research','Fintech']},
+    vuzo:{n:'02',title:'Vuzo Africa',img:'img/proj-vuzo.jpg',alt:'vuzo.africa logo',desc:'Payroll infrastructure for Africa. The endpoint salaries flow through. From employer to employee.',tags:['Payroll','Brand & Visual Identity','Figma','UI/UX design','Tech','Logo design']},
+    canto:{n:'03',title:'Canto Xperience',img:'img/proj-canto.jpg',alt:'Canto landing page on a laptop',desc:'Wedding websites, without the stress. A minimalist and high-end platform for modern couples to launch custom visual invitation hubs.',tags:['Brand & Visual Identity','Web app','Figma','Landing page','UI/UX design','Landing page','Saas']},
+    bettersound:{n:'04',title:'BetterSound',img:'img/proj-bettersound.jpg',alt:'BetterSound guitar strap on an electric guitar',desc:'Creative brand identity and promotional campaign designed to capture the essence of a modern, contemporary audio studio.',tags:['Brand & Visual Identity','Logo design','Music','Digital flyers','Youtube studio']}
+  };
+  const CASES={
+    paidlife:{sub:'Mobile app',live:'https://play.google.com/store/search?q=paidhr&c=apps&hl=en',next:['vuzo','canto','bettersound'],
+      overview:['We built PaidLife as a financial OS within the PaidHR employee app, but they serve different user intents, HR awareness vs. financial optimization. We needed to separate them without fragmenting the experience or forcing users to jump between disconnected products.'],
+      approach:['Centered on rethinking how employees interact with their finances within the workplace ecosystem.','Rather than treating it as another wallet or payments application, I approached it as a broader financial experience that brings together everyday transactions, access to funds, card management, bill payments, and savings.'],
+      features:['Earned wage access, so employees can get paid for days already worked before payday.','Multi-currency wallet in <b>NGN, USD</b> and <b>GBP</b> to send, add and convert money.','Bills and payments for airtime, data, electricity, cable TV, education and transport.','Employer benefits and a loan marketplace with low-interest partner loans.','Transaction PIN, biometrics and two-factor authentication to keep accounts secure.'],
+      alts:['PaidLife home screen on a phone','PaidLife wallet screen held in hand','Airtime and bills payment screens'],
+      gallery:['“You don’t have to wait for payday” earned wage access screens','“Send money to anyone, anywhere” transfer screens','“Swift loans, multiple providers” loan screen','“Virtual cards for all your spending needs” PaidLife card']},
+    vuzo:{sub:'Brand Identity',live:'https://vuzo.africa',next:['paidlife','canto','bettersound'],
+      overview:['Vuzo is payroll infrastructure for Africa. It lets businesses and platforms offer payroll inside their own products through one API, without building it themselves. It handles tax calculation, pension handling, payslip generation, statutory filings and salary payouts. Its message is simple: “Stop building payroll. Start offering it.”'],
+      approach:['Minimal by intent. Vuzo is the endpoint salaries pass through, so the identity removes everything except clarity.'],
+      approachList:['Monochrome base. Black and white carry the brand with quiet confidence.','One accent. A single orange ring marks movement: the moment money lands.','Lowercase wordmark. vuzo.africa is approachable, modern and built for developers.','Bold, rounded type. Strong, but friendly instead of corporate.'],
+      features:['Wordmark. A lowercase logotype with the domain built into the name.','Signal ring. An orange mark for payouts, status and focus.','Restrained palette. Black, white and one orange.','Typographic voice. Large display headlines over quiet supporting text.','Iconic branded patterns.'],
+      alts:['Vuzo orange signal ring mark','vuzo.africa wordmark on a dark gradient','Vuzo colour palette: F1592A, 000000, FFFFFF'],
+      gallery:['Vuzo branded tote bag','“Stop building payroll. Start offering it.” payroll dashboard','Vuzo signal ring pattern','Vuzo branded hoodie']},
+    canto:{sub:'Brand Identity/Website/Web app',live:'https://canto-x-website.vercel.app/',next:['paidlife','vuzo','bettersound'],
+      overview:['Canto is a wedding website builder that lets couples turn a template into a live, shareable link in minutes, no designer, no code. Beyond the couple-facing product, Canto also serves professional event planners with guest management, vendor tracking, and multi-client dashboards, and offers couples a custom monogram logo service delivered in 48 hours.'],
+      approach:['I built the brand from the ground up, shaping its name, positioning, and visual identity. I designed a dual-audience landing page, interactive template gallery, and flexible pricing structure for event planners. I also turned the Figma designs into a responsive, mobile-first front-end across four core pages, adding thoughtful interactions and animations to create a smooth, engaging experience.'],
+      features:['Invitation templates you edit and share with guests as one link.','Guest management with guest caps and table and seat assignment.','Personalised invites and a gift wishlist, on its own or on the wedding website.','CAC-verified vendors with ratings and reports.','To-do lists and Google Calendar sync to keep planning on track.'],
+      alts:['Canto landing page on a laptop','Canto logo over wedding rings','Canto mobile landing page'],
+      gallery:['Canto guest management dashboard on a laptop','“Planning a celebration shouldn’t take five tools” campaign','“Built for everyone who makes the day happen” graphic','Canto vendor and wedding website mobile screens']},
+    bettersound:{sub:'Brand Identity',live:'https://www.youtube.com/@bettersoundstudios',next:['paidlife','canto','vuzo'],
+      overview:['BetterSound is an audio-focused brand built around the power of sound and its ability to create memorable experiences. The brand identity explores a bold visual direction that communicates energy, clarity, and individuality. Through a distinctive logo, expressive typography, and a vibrant color palette, the identity establishes a recognizable presence across digital and physical touchpoints.'],
+      approach:['Created a visual identity that reflects the personality of an audio brand while remaining consistent and recognizable across different applications. I explored the relationship between sound, movement, and visual expression, translating these elements into a distinctive logo and supporting design language. The focus was on building a cohesive identity that balances boldness with simplicity, ensuring the brand feels memorable across both digital and physical experiences.'],
+      features:['Custom Logo Design: A distinctive wordmark and sound-wave-inspired symbol that form the foundation of the brand identity.','Visual Identity System: A consistent design language built around recognizable graphic elements and brand assets.','Color Palette: A bold combination of red, black, and white to communicate energy, confidence, and clarity.','Typography System: Carefully selected typography that balances strong visual expression with readability.','Brand Applications: Visual identity extended across merchandise, audio equipment, promotional materials, and digital assets.','Graphic Elements: Custom patterns and sound-inspired visuals that reinforce brand recognition and consistency.'],
+      alts:['BetterSound wordmark','BetterSound circular badge on red','BetterSound guitar strap'],
+      single:'BetterSound brand collage: headphones, colour palette, laptop sticker and artist flyers'}
+  };
+  const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const tags=a=>'<div class="tags">'+a.map(t=>'<span class="pill">'+esc(t)+'</span>').join('')+'</div>';
+  function caseHTML(key){
+    const c=CASES[key], k=CARDS[key];
+    const ov=c.overview.map(t=>'<p>'+t+'</p>').join('')+(c.live?'<a class="btn" href="'+c.live+'" target="_blank" rel="noopener">View live project '+ARROW+'</a>':(key==='bettersound'?'':'<a class="btn" href="#" data-pending>View live project '+ARROW+'</a>'));
+    const ap=c.approach.map(t=>'<p>'+t+'</p>').join('')+(c.approachList?'<ul>'+c.approachList.map(t=>'<li>'+t+'</li>').join('')+'</ul>':'');
+    const fe='<ul>'+c.features.map(t=>'<li>'+t+'</li>').join('')+'</ul>';
+    const row=(i,flip,h,body)=>'<div class="cs-row'+(flip?' flip':'')+'"><div class="cs-text"><h2>'+h+'</h2>'+body+'</div><div class="cs-media"><img src="img/cs/'+key+'-r'+i+'.jpg" alt="'+c.alts[i-1]+'"></div></div>';
+    const gal=c.single?'<div class="cs-gallery single"><img src="img/cs/'+key+'-gall.jpg" alt="'+c.single+'"></div>'
+      :'<div class="cs-gallery">'+c.gallery.map((a,i)=>'<img src="img/cs/'+key+'-g'+(i+1)+'.jpg" alt="'+a+'">').join('')+'</div>';
+    const next=c.next.map(n=>{const d=CARDS[n];return '<article class="ncard"><a class="nimg" href="#'+n+'"><img src="'+d.img+'" alt="'+d.alt+'"></a><div class="eyebrow">Case Study '+d.n+'</div><h3>'+d.title+'</h3><p>'+d.desc+'</p>'+tags(d.tags)+'<a href="#'+n+'" class="btn">View project '+ARROW+'</a></article>'}).join('');
+    return '<div class="wrap">'
+      +'<nav class="crumb" aria-label="Breadcrumb"><a href="#projects">Project</a> / '+k.title+'</nav>'
+      +'<div class="case-title"><h1>'+k.title+'</h1><p>'+c.sub+'</p></div>'
+      +'<div class="cs-rows">'+row(1,false,'Overview',ov)+row(2,true,'Approach',ap)+row(3,false,'Key features',fe)+'</div>'
+      +gal+'</div>'
+      +'<section class="next"><div class="wrap"><div class="next-head"><h2>Next project</h2><div class="arrows"><button type="button" class="prev" aria-label="Previous project"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="nxt" aria-label="Next project"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div></div>'
+      +'<div class="next-track">'+next+'</div></div></section>';
+  }
+  (function(){
+    const home=document.getElementById('home'), cs=document.getElementById('case');
+    function wireCarousel(){
+      const tr=cs.querySelector('.next-track'), p=cs.querySelector('.prev'), n=cs.querySelector('.nxt');
+      const step=()=>tr.querySelector('.ncard').getBoundingClientRect().width+50;
+      const upd=()=>{p.disabled=tr.scrollLeft<4; n.disabled=tr.scrollLeft+tr.clientWidth>=tr.scrollWidth-4};
+      p.onclick=()=>tr.scrollBy({left:-step()}); n.onclick=()=>tr.scrollBy({left:step()});
+      tr.addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
+      cs.querySelectorAll('[data-pending]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+    }
+    // Eased scrolling (ease-in-out) for in-page links like Projects, Resume and Let's talk
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let anim=0;
+    function smoothTo(el){
+      cancelAnimationFrame(anim);
+      const navH=document.querySelector('.nav').offsetHeight;
+      const target=Math.max(0,Math.min(el.getBoundingClientRect().top+scrollY-navH,document.documentElement.scrollHeight-innerHeight));
+      const start=scrollY, dist=target-start;
+      if(reduce||Math.abs(dist)<2){window.scrollTo(0,target);return}
+      const dur=Math.min(1600,Math.max(800,500+Math.abs(dist)*0.35));
+      const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+      const t0=performance.now();
+      const stop=()=>cancelAnimationFrame(anim);
+      addEventListener('wheel',stop,{once:true,passive:true}); addEventListener('touchstart',stop,{once:true,passive:true});
+      (function tick(now){
+        const t=Math.min(1,(now-t0)/dur);
+        window.scrollTo(0,start+dist*ease(t));
+        if(t<1) anim=requestAnimationFrame(tick);
+      })(t0);
+    }
+    function route(){
+      const h=(location.hash||'').slice(1);
+      if(CASES[h]){
+        cancelAnimationFrame(anim);
+        cs.innerHTML=caseHTML(h); cs.hidden=false; home.hidden=true;
+        document.title=CARDS[h].title+' — thisisOlawale';
+        window.scrollTo(0,0); wireCarousel();
+      }else{
+        const wasCase=home.hidden;
+        cs.hidden=true; cs.innerHTML=''; home.hidden=false;
+        document.title='thisisOlawale — Product & Brand Designer';
+        if(wasCase) window.scrollTo(0,0);
+        const el=h&&document.getElementById(h);
+        if(el) requestAnimationFrame(()=>smoothTo(el));
+      }
+    }
+    // Take over in-page link clicks so the page glides instead of jumping
+    document.addEventListener('click',e=>{
+      const a=e.target.closest('a[href^="#"]');
+      if(!a||e.defaultPrevented||a.hasAttribute('data-pending')) return;
+      const h=a.getAttribute('href');
+      e.preventDefault();
+      if(h==='#'){ if(!home.hidden) smoothTo(document.body); else {history.pushState(null,'',location.pathname+location.search); route();} return; }
+      if(location.hash===h){ const el=document.getElementById(h.slice(1)); if(el&&!home.hidden) smoothTo(el); else route(); return; }
+      history.pushState(null,'',h); route();
+    });
+    addEventListener('hashchange',route); addEventListener('popstate',route); route();
+  })();
+
+  // Mobile hamburger menu
+  (function(){
+    const nav=document.querySelector('.nav'), btn=nav.querySelector('.burger'), scrim=document.querySelector('.mscrim');
+    const set=open=>{nav.classList.toggle('open',open);scrim.classList.toggle('show',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Close menu':'Open menu')};
+    btn.addEventListener('click',()=>set(!nav.classList.contains('open')));
+    scrim.addEventListener('click',()=>set(false));
+    nav.querySelectorAll('.mmenu a').forEach(a=>a.addEventListener('click',()=>set(false)));
+    addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+    matchMedia('(min-width:721px)').addEventListener('change',e=>{if(e.matches)set(false)});
+  })();
+</script>
+</body>
+</html>
